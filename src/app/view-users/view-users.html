@@ -1,0 +1,21 @@
+<!-- <div *ngIf="user; else notFound">
+  <h2>{{ user.name }}</h2>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Address:</strong> {{ user.address }}</p>
+</div> -->
+
+<ng-template #notFound>
+  <p>User not found.</p>
+</ng-template>
+
+<!-- <div class="user-list">
+  <h2>All Users</h2>
+  <div *ngFor="let user of users" class="user-card">
+    <h3>{{ user.name }}</h3>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <button (click)="viewDetails(user.id)">View Details</button>
+    <button (click)="deleteUser(user.id)" class="delete-btn">Delete</button>
+  </div>
+</div> -->

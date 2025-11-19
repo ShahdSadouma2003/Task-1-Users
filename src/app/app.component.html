@@ -1,0 +1,32 @@
+<app-header (addUserClicked)="toggleAddUserForm()" />
+
+@if (showAddUserForm()) {
+  <div class="modal-overlay" (click)="toggleAddUserForm()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-add-new-user
+        (userAdded)="onUserAdded($event)"
+        (cancel)="toggleAddUserForm()">
+      </app-add-new-user>
+      <button class="close-btn" (click)="toggleAddUserForm()">✖</button>
+    </div>
+  </div>
+}
+
+ <ul>
+  @for (user of users(); track user.id) {
+    <li>
+      <app-user
+        [user]="user"
+        [selected]="user.id === selectedUserId()"
+        (select)="onSelectUser($event)">
+      </app-user>
+    </li>
+  }
+</ul>
+
+<div *ngIf="selectedUser() as user">
+  <app-user-details [user]="user" />
+</div>  
+
+
+<router-outlet></router-outlet>

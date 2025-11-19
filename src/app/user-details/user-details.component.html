@@ -1,0 +1,23 @@
+@if (user) {
+  <div class="details">
+    <h2>{{ user.name }}</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>ID:</strong> {{ user.id }}</p>
+
+    <button (click)="viewFullDetails()">View Full Details</button>
+  </div>
+}
+
+<!-- .................. -->
+
+<!-- @if (user) {
+  <div class="details">
+    <h2>{{ user.name }}</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>ID:</strong> {{ user.id }}</p>
+
+    <button (click)="viewFullDetails()">View Full Details</button>
+  </div>
+} -->
