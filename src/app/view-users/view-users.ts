@@ -14,15 +14,53 @@
 // export class ViewUsersComponent {
 // }
 
+// ..........................
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { Router, RouterModule } from '@angular/router';
+// import { UserService, User } from '../user/user.service';
+
+// @Component({
+//   selector: 'app-view-users',
+//   standalone: true,
+//   imports: [CommonModule, RouterModule],
+//   templateUrl: './view-users.html',
+//   styleUrls: ['./view-users.css'] 
+// })
+// export class ViewUsersComponent implements OnInit {
+//   users: User[] = [];
+
+//   constructor(private userService: UserService, private router: Router) {}
+
+//   async ngOnInit() {
+//     await this.userService.fetchUsers(); 
+//     this.users = this.userService.users(); 
+//   }
+
+//   async deleteUser(id: number) {
+//     await this.userService.deleteUser(id); 
+//     this.users = this.userService.users(); 
+//   }
+
+//   viewDetails(id: number) {
+//     this.router.navigate(['/user', id]); 
+//   }
+// }
+
+// .....................
+
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UserService, User } from '../user/user.service';
 
 @Component({
   selector: 'app-view-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './view-users.html',
   styleUrls: ['./view-users.css']
 })
@@ -31,18 +69,17 @@ export class ViewUsersComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {}
 
-  ngOnInit() {
-    this.userService.fetchUsers().then(() => {
-      this.users = this.userService.users();
-    });
+  async ngOnInit() {
+    await this.userService.fetchUsers();
+    this.users = this.userService.users();
   }
 
-  async deleteUser(id: number) {
-    await this.userService.deleteUser(id);
-    this.users = this.userService.users(); // refresh list
+  async deleteUser(id: number): Promise<void> {
+    await this.userService.deleteUser(id); // ✅ Service returns Promise<void>
+    this.users = this.userService.users(); // ✅ Refresh list
   }
 
-  viewDetails(id: number) {
-    this.router.navigate(['/user', id]);
+  viewDetails(id: number): void {
+    this.router.navigate(['/user', id]); // ✅ Navigate to details page
   }
 }

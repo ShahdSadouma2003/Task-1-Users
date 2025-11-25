@@ -1,4 +1,4 @@
-<div class="full-details" *ngIf="!loading && user && !isDeleted">
+<!-- <div class="full-details" *ngIf="!loading && user && !isDeleted">
   <h2>{{ user.name }}</h2>
 
   <div *ngIf="!editMode">
@@ -28,6 +28,46 @@
     <button (click)="toggleEdit()">Edit User</button>
     <button (click)="deleteUser()" class="delete-btn">Delete User</button>
   </div>
-</div>
+</div> -->
 
 <!-- .................... -->
+
+
+<div class="full-details" *ngIf="!loading && user">
+  <h2>{{ user.name }}</h2>
+
+  <!-- View Mode -->
+  <div *ngIf="!editMode">
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+    <p><strong>Website:</strong> {{ user.website }}</p>
+    <p><strong>Address:</strong> {{ user.address.street }}, {{ user.address.city }}</p>
+    <p><strong>Company:</strong> {{ user.company.name }}</p>
+  </div>
+
+  <!-- Edit Mode -->
+  <form *ngIf="editMode" [formGroup]="userForm" (ngSubmit)="saveChanges()" class="edit-form">
+    <label>Name: <input formControlName="name" /></label>
+    <label>Username: <input formControlName="username" /></label>
+    <label>Email: <input formControlName="email" /></label>
+    <label>Phone: <input formControlName="phone" /></label>
+    <label>Website: <input formControlName="website" /></label>
+    <label>Street: <input formControlName="street" /></label>
+    <label>City: <input formControlName="city" /></label>
+    <label>Company: <input formControlName="company" /></label>
+
+    <button type="submit">💾 Save</button>
+    <button type="button" (click)="toggleEdit()">Cancel</button>
+  </form>
+
+  <!-- Action Buttons -->
+  <div class="buttons">
+    <button (click)="toggleEdit()">Edit User</button>
+    <button (click)="deleteUser()" class="delete-btn">Delete User</button>
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <p>Loading user details...</p>
+</div>

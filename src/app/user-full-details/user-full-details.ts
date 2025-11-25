@@ -104,4 +104,129 @@ export class UserFullDetailsComponent implements OnInit {
   }
 }
 
-// ...........
+// ............................
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+// import { UserService, User } from '../user/user.service';
+
+// @Component({
+//   selector: 'app-user-full-details',
+//   standalone: true,
+//   imports: [],
+//   templateUrl: './user-full-details.html',
+//   styleUrls: ['./user-full-details.css']
+// })
+// export class UserFullDetailsComponent implements OnInit {
+//   user!: User;
+//   loading = true;
+
+//   constructor(private route: ActivatedRoute, private userService: UserService) {}
+
+//   ngOnInit() {
+//     // Subscribe to route param changes
+//     this.route.paramMap.subscribe(params => {
+//       const id = Number(params.get('id'));
+//       this.fetchUser(id);
+//     });
+//   }
+
+//   async fetchUser(id: number) {
+//     this.loading = true;
+//     this.user = await this.userService.getUserById(id);
+//     this.loading = false;
+//   }
+// }
+
+// ................
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+// import { UserService, User } from '../user/user.service';
+// import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+// import { CommonModule } from '@angular/common';
+
+// @Component({
+//   selector: 'app-user-full-details',
+//   standalone: true,
+//   imports: [CommonModule, ReactiveFormsModule],
+//   templateUrl: './user-full-details.html',
+//   styleUrls: ['./user-full-details.css']
+// })
+// export class UserFullDetailsComponent implements OnInit {
+//   user!: User;
+//   loading = true;
+//   editMode = false;
+//   userForm!: FormGroup;
+
+//   constructor(
+//     private route: ActivatedRoute,
+//     private userService: UserService,
+//     private fb: FormBuilder
+//   ) {}
+
+//   ngOnInit() {
+//     this.route.paramMap.subscribe(params => {
+//       const id = Number(params.get('id'));
+//       this.fetchUser(id);
+//     });
+//   }
+
+//   async fetchUser(id: number): Promise<void> {
+//     try {
+//       this.loading = true;
+//       this.user = await this.userService.getUserById(id); // Must return Promise<User>
+//       this.initForm();
+//     } catch (error) {
+//       console.error('Error fetching user:', error);
+//     } finally {
+//       this.loading = false;
+//     }
+//   }
+
+//   initForm() {
+//     this.userForm = this.fb.group({
+//       name: [this.user.name],
+//       username: [this.user.username],
+//       email: [this.user.email],
+//       phone: [this.user.phone],
+//       website: [this.user.website],
+//       street: [this.user.address.street],
+//       city: [this.user.address.city],
+//       company: [this.user.company.name]
+//     });
+//   }
+
+//   toggleEdit() {
+//     this.editMode = !this.editMode;
+//   }
+
+//   async saveChanges(): Promise<void> {
+//     const updatedUser: User = {
+//       ...this.user,
+//       ...this.userForm.value,
+//       address: {
+//         ...this.user.address,
+//         street: this.userForm.value.street,
+//         city: this.userForm.value.city
+//       },
+//       company: {
+//         ...this.user.company,
+//         name: this.userForm.value.company
+//       }
+//     };
+
+//     await this.userService.updateUser(updatedUser);
+//     this.user = updatedUser;
+//     this.toggleEdit();
+//   }
+
+//   async deleteUser(): Promise<void> {
+//     if (confirm('Are you sure you want to delete this user?')) {
+//       await this.userService.deleteUser(this.user.id);
+//       alert('User deleted successfully!');
+//     }
+//   }
+// }

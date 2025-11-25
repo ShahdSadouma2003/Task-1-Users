@@ -1,6 +1,10 @@
-<!-- <div *ngFor="let user of users" class="user-card">
+<!-- 
+<div *ngFor="let user of users" class="user-card">
   <h3>{{ user.name }}</h3>
-  <p><strong>Email:</strong> {{ user.email }}</p>
   <p><strong>Username:</strong> {{ user.username }}</p>
-  <button (click)="viewFullDetails(user.id)">View Full Details</button>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>ID:</strong> {{ user.id }}</p>
+  <button [routerLink]="['/user', user.id]" class="details-btn">View Full Details</button>
 </div> -->
+
+<app-view-users/>
