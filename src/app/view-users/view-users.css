@@ -1,0 +1,12 @@
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: 0.3s;
+  grid-template-columns: 1fr 2fr; 
+}
+.user-card:hover {
+  background: #f0f0f0;
+}

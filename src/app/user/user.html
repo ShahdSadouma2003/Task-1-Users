@@ -1,0 +1,14 @@
+<div class="user-btn" [class.active]="selected">
+  <button (click)="onSelectedUser()">
+    <span>{{ user.name }}</span>
+  </button>
+</div>
+
+<div *ngFor="let user of users">
+  <h3>{{ user.name }}</h3>
+  <p>{{ user.email }}</p>
+  <p>{{ user.username }}</p>
+  <button [routerLink]="['/user',user.id]">View Full Details</button>
+</div>
+
+<!-- .................. -->

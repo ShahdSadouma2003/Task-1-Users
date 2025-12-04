@@ -1,0 +1,22 @@
+<!-- <div *ngIf="user; else notFound">
+  <h2>{{ user.name }}</h2>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Address:</strong> {{ user.address }}</p>
+</div> -->
+
+<!-- .................. -->
+
+<ng-template #notFound>
+  <p>User not found.</p>
+</ng-template>
+
+<!-- ..................... -->
+
+<!-- <ul>
+  <li *ngFor="let u of users">
+    <strong>{{ u.name }}</strong> — {{ u.email }}
+    <a [routerLink]="['/user', u.id]">View full details</a>
+    <button (click)="viewDetails(u.id)">View full details</button>
+  </li>
+</ul> -->
