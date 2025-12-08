@@ -13,10 +13,17 @@
 
 <!-- ..................... -->
 
-<!-- <ul>
+
+<!-- <h2>Users</h2>
+
+<ul class="list">
   <li *ngFor="let u of users">
-    <strong>{{ u.name }}</strong> — {{ u.email }}
-    <a [routerLink]="['/user', u.id]">View full details</a>
-    <button (click)="viewDetails(u.id)">View full details</button>
+    <div>
+      <div><strong>{{ u.name }}</strong></div>
+      <div class="muted">{{ u.email }}</div>
+    </div>
+
+    <a [routerLink]="['/users', u.id]">View full details</a>
   </li>
 </ul> -->
+

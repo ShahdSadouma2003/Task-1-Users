@@ -30,3 +30,26 @@ export class ViewUsersComponent implements OnInit {
     this.router.navigate(['/user', id]);
   }
 }
+
+// ................
+
+// import { Component } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { RouterLink } from '@angular/router';
+
+// type User = { id: number; name: string; email: string };
+
+// @Component({
+//   standalone: true,
+//   selector: 'app-view-users',
+//   imports: [CommonModule, RouterLink],
+//   templateUrl: './view-users.html',
+// })
+// export class ViewUsersComponent {
+//   // Replace with real API data if needed
+//   users: User[] = [
+//     { id: 1, name: 'Leanne Graham', email: 'leanne@company.com' },
+//     { id: 2, name: 'Ervin Howell',  email: 'ervin@company.com'  },
+//     { id: 3, name: 'Clementine',    email: 'clem@company.com'   },
+//   ];
+// }
